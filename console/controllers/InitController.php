@@ -2,6 +2,7 @@
 
 namespace console\controllers;
 
+use backend\services\TaskSender;
 use common\models\Atm;
 use common\services\ATMServiceInterface;
 use yii\console\Controller;
@@ -10,26 +11,26 @@ class InitController extends Controller
 {
     private $atmService;
 
-    public function __construct($id, $module, ATMServiceInterface $service, $config = [])
+    public function __construct($id, $module, ATMServiceInterface $service, TaskSender $sender, $config = [])
     {
         parent::__construct($id, $module, $config);
-        /*$list = $service->getList('Днепропетровск');
-        foreach ($list as $item) {
-            var_dump($item); exit;
-        }*/
+        var_dump($sender); exit;
         $this->atmService = $service;
     }
 
     /**
+     * Get all atm data
      * @return bool
      */
     public function actionIndex()
     {
-        $atmList = $this->atmService->getList(\Yii::$app->params['atmDefaultCity']);
+        $atmList = $this->atmService->getList('');
         foreach ($atmList as $item) {
             $atm = new Atm();
             $atm->hydrate($item);
             $atm->save();
         }
+
+        return true;
     }
 }
