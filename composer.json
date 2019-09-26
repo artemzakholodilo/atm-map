@@ -40,13 +40,5 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ],
-    "scripts": {
-        "post-install-cmd": [
-            "php yii init"
-        ],
-        "post-update-cmd": [
-          "php yii init/update"
-        ]
-    }
+    ]
 }

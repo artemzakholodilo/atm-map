@@ -49,7 +49,13 @@ class PbAtmService extends BaseObject implements ATMServiceInterface
             return [];
         }
 
-        return Json::decode($response->content, true);
+        if (!$response->content) {
+            return [];
+        }
+
+        $atmList = Json::decode($response->content, true);
+
+        return $atmList['devices'] ?? [];
     }
 
     /**
