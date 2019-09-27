@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use backend\services\TaskSender;
 use Yii;
 use common\models\Atm;
 use common\models\AtmSearch;
@@ -16,6 +17,24 @@ use yii\filters\VerbFilter;
 class AtmController extends Controller
 {
     /**
+     * @var TaskSender $taskSender
+     */
+    private $taskSender;
+
+    /**
+     * AtmController constructor.
+     * @param $id
+     * @param $module
+     * @param TaskSender $taskSender
+     * @param array $config
+     */
+    public function __construct($id, $module, TaskSender $taskSender, $config = [])
+    {
+        parent::__construct($id, $module, $config);
+        $this->taskSender = $taskSender;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function behaviors()
@@ -28,6 +47,11 @@ class AtmController extends Controller
                         'actions' => ['index', 'update'],
                         'allow' => true,
                         'roles' => ['admin']
+                    ],
+                    [
+                        'actions' => ['update-list'],
+                        'allow' => true,
+                        'roles' => ['superadmin']
                     ]
                 ]
             ],
@@ -53,6 +77,23 @@ class AtmController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionUpdateList()
+    {
+        if (\Yii::$app->request->isPost) {
+            $this->taskSender->sendTask(['update-list' => true]);
+            $searchModel = new AtmSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $message = 'Updated successfully';
+
+            return $this->render('index', compact('searchModel', 'dataProvider', 'message'));
+        }
+
+        return $this->redirect('index');
     }
 
     /**
