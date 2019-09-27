@@ -42,6 +42,7 @@ class UpdateAtmController extends Controller
     public function actionIndex()
     {
         $messages = $this->taskReceiver->getMessages();
+        var_dump($messages); exit;
         if (count($messages)) {
             $this->updateList();
         }

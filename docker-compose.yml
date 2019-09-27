@@ -30,6 +30,15 @@ services:
       - MYSQL_USER=artem
       - MYSQL_PASSWORD=root
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: acme
+      RABBITMQ_DEFAULT_PASS: acme
+    ports:
+      - "15672:15672"
+    restart: always
+
   #pgsql:
   #  image: postgres:9.5
   #  environment:
