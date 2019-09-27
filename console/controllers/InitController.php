@@ -14,7 +14,6 @@ class InitController extends Controller
     public function __construct($id, $module, ATMServiceInterface $service, TaskSender $sender, $config = [])
     {
         parent::__construct($id, $module, $config);
-        var_dump($sender); exit;
         $this->atmService = $service;
     }
 

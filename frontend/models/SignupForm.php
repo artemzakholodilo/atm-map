@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\models;
 
 use Yii;
@@ -38,24 +39,31 @@ class SignupForm extends Model
     }
 
     /**
-     * Signs user up.
-     *
-     * @return bool whether the creating new account was successful and email was sent
+     * @return User|null
+     * @throws \Exception
      */
     public function signup()
     {
         if (!$this->validate()) {
             return null;
         }
-        
+
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
-        $user->generateEmailVerificationToken();
-        return $user->save() && $this->sendEmail($user);
 
+        //Добавляем роль по умолчанию для каждого зарегестрированного
+        if ($user->save()) {
+            $auth = Yii::$app->authManager;
+            $role = $auth->getRole('user');
+            $auth->assign($role, $user->id);
+
+            return $user;
+        }
+
+        return null;
     }
 
     /**
