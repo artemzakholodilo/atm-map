@@ -13,6 +13,7 @@ class TaskSender extends BaseObject
     /**
      * @param array $message
      * @param bool $environmentProd
+     * @return bool
      */
     public function sendTask($message = [], $environmentProd = false)
     {
@@ -20,7 +21,7 @@ class TaskSender extends BaseObject
         try {
             $this->getChannel()->basic_publish($message, '', $this->queueName);
         } catch (\AMQPException $ex) {
-            var_dump($ex); exit;
+            return false;
         }
     }
 }

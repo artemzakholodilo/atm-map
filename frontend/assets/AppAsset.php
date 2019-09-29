@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
         'angular/dist/polyfills-es5.js',
         'angular/dist/vendor-es5.js',
         'angular/dist/main-es5.js',
+        'js/map.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

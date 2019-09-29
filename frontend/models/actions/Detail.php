@@ -3,18 +3,17 @@
 namespace frontend\models\actions;
 
 use common\models\Atm;
-use yii\base\Model;
 use yii\rest\ViewAction;
 use yii\web\Response;
 
-class DetailAction extends ViewAction
+class Detail extends ViewAction
 {
     /**
-     * @param integer $id
-     * @return Response
+     * @param string $id
+     * @return array|\yii\db\ActiveRecordInterface
      * @throws \yii\web\NotFoundHttpException
      */
-    public function run(integer $id): Response
+    public function run($id)
     {
         /**
          * @var Atm $model
@@ -25,12 +24,10 @@ class DetailAction extends ViewAction
             call_user_func($this->checkAccess, $this->id, $model);
         }
 
-        $response = new Response(
-            [
-                'detail' => $model->address
-            ]
-        );
-
-        return $response;
+        if (!$model) {
+            return [];
+        } else {
+            return [$model->address];
+        }
     }
 }

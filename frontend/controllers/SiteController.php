@@ -40,6 +40,11 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['user']
+                    ]
                 ],
             ],
             'verbs' => [
@@ -74,7 +79,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (\Yii::$app->user->isGuest) {
+            return $this->redirect(['login']);
+        }
+        else {
+            return $this->render('index');
+        }
     }
 
     /**

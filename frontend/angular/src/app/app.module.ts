@@ -3,6 +3,7 @@ import { NgModule, Injector } from '@angular/core';
 import { createCustomElement } from "@angular/elements";
 
 import { AppComponent } from './app.component';
+import {MapComponent} from "./map/map.component";
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { AppComponent } from './app.component';
     providers: [],
     bootstrap: [],
     entryComponents:[
-        AppComponent
+        AppComponent, MapComponent
     ]
 })
 export class AppModule {

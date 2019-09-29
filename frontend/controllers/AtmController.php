@@ -3,16 +3,35 @@
 namespace frontend\controllers;
 
 use common\models\Atm;
-use frontend\models\actions\DetailAction;
-use yii\rest\Controller;
+use frontend\models\actions\Detail;
+use yii\helpers\ArrayHelper;
+use yii\rest\ActiveController;
 use yii\web\Response;
 
-class AtmController extends Controller
+/**
+ * @todo move to new module api/v1
+ */
+class AtmController extends ActiveController
 {
-    /**
-     * @var string $modelClass
-     */
     public $modelClass = Atm::class;
+
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
+
+    public function behaviors()
+    {
+        return ArrayHelper::merge(parent::behaviors(), [
+            [
+                'class' => 'yii\filters\ContentNegotiator',
+                'only' => ['details', 'index'],  // in a controller
+                'formats' => [
+                    'application/json' => Response::FORMAT_JSON,
+                ]
+            ],
+        ]);
+    }
 
     /**
      * @return array
@@ -21,12 +40,19 @@ class AtmController extends Controller
     {
         $actions = parent::actions();
 
-        $actions['detail'] = [
-            'class' => DetailAction::class,
+        unset($actions['index']);
+
+        $actions['details'] = [
+            'class' => Detail::class,
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
         ];
 
         return $actions;
+    }
+
+    public function actionIndex()
+    {
+        return Atm::find()->all();
     }
 }

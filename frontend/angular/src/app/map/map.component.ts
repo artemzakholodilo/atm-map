@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   constructor(private atmGeoService: AtmGeoservice) { }
 
   ngOnInit() {
+    alert(123);
     this.getAtmMapData();
     this.renderMap();
   }
