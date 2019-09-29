@@ -9,7 +9,7 @@ use yii\console\ExitCode;
 use yii\db\Transaction;
 use yii\helpers\Console;
 
-class InitController extends Controller
+class InitAtmController extends Controller
 {
     /**
      * @var ATMServiceInterface $atmService
