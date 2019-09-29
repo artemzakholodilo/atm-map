@@ -5,9 +5,13 @@ namespace frontend\controllers;
 use common\models\Atm;
 use frontend\models\actions\DetailAction;
 use yii\rest\Controller;
+use yii\web\Response;
 
 class AtmController extends Controller
 {
+    /**
+     * @var string $modelClass
+     */
     public $modelClass = Atm::class;
 
     /**
@@ -24,5 +28,13 @@ class AtmController extends Controller
         ];
 
         return $actions;
+    }
+
+    /**
+     * @return Response
+     */
+    public function actionIndex()
+    {
+        return new Response(json_encode([123]));
     }
 }
