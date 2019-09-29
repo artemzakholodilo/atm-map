@@ -29,12 +29,4 @@ class AtmController extends Controller
 
         return $actions;
     }
-
-    /**
-     * @return Response
-     */
-    public function actionIndex()
-    {
-        return new Response(json_encode([123]));
-    }
 }

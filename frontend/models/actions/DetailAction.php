@@ -2,6 +2,7 @@
 
 namespace frontend\models\actions;
 
+use common\models\Atm;
 use yii\base\Model;
 use yii\rest\ViewAction;
 use yii\web\Response;
@@ -16,7 +17,7 @@ class DetailAction extends ViewAction
     public function run(integer $id): Response
     {
         /**
-         * @var Model $model
+         * @var Atm $model
          */
         $model = $this->findModel($id);
 
@@ -26,7 +27,7 @@ class DetailAction extends ViewAction
 
         $response = new Response(
             [
-                'detail' => $model->alias
+                'detail' => $model->address
             ]
         );
 

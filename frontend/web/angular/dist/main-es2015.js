@@ -32,20 +32,7 @@ webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-toolbar color=\"primary\">\n  <span>Google Maps Angular</span>\n  <span class=\"toolbar-spacer\"></span>\n  <a aria-label=\"GitHub\" class=\"mat-button\" href=\"#\"><img alt=\"angular\" src=\"../../../assets/images/github-circle-white-transparent.svg\">\n  </a>\n</mat-toolbar>\n<div class=\"row m-2\">\n  <div class=\"col-md-4 p-3\">\n    <mat-card>\n      <mat-card-header>\n        <mat-card-title>Map with 1 Marker</mat-card-title>\n        <mat-card-subtitle>Marker</mat-card-subtitle>\n      </mat-card-header>\n      <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [zoomControl]=\"false\" [styles]=\"mapStyle\">\n        <agm-marker [latitude]=\"lat\" [longitude]=\"lng\"></agm-marker>\n      </agm-map>\n      <mat-card-content class=\"pt-3\">\n        <p class=\"p-3\">\n          A map with One Map Marker plotted with the latitude and longitude specified by the user in the component.\n        </p>\n      </mat-card-content>\n      <mat-card-actions class=\"m-3\">\n        <a href=\"https://github.com/ThiruPraveen18/ANGULAR-GoogleMaps/blob/master/src/app/app.component.html\"><button mat-raised-button color=\"primary\">VIEW CODE</button></a>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n  <div class=\"col-md-4 p-3\">\n    <mat-card>\n      <mat-card-header>\n        <mat-card-title>Map with Multiple Markers</mat-card-title>\n        <mat-card-subtitle>Marker</mat-card-subtitle>\n      </mat-card-header>\n      <agm-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]='8' [zoomControl]=\"false\" [styles]=\"mapStyle\">\n        <agm-marker [latitude]='11.0503696' [longitude]='76.9365486'></agm-marker>\n        <agm-marker [latitude]='10.9503696' [longitude]='77.4365486'></agm-marker>\n        <agm-marker [latitude]='11.2503696' [longitude]='77.0365486'></agm-marker>\n        <agm-marker [latitude]='11.3503696' [longitude]='77.3365486'></agm-marker>\n      </agm-map>\n      <mat-card-content class=\"pt-3\">\n        <p class=\"p-3\">\n          A map with Multiple Map Markers plotted with the latitude and longitude specified by the user.\n        </p>\n      </mat-card-content>\n      <mat-card-actions class=\"m-3\">\n        <a href=\"https://github.com/ThiruPraveen18/ANGULAR-GoogleMaps/blob/master/src/app/app.component.html\"><button mat-raised-button color=\"primary\">VIEW CODE</button></a>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n  <div class=\"col-md-4 p-3\">\n    <mat-card>\n      <mat-card-header>\n        <mat-card-title>Draw Lines between Markers</mat-card-title>\n        <mat-card-subtitle>Marker + Polyline</mat-card-subtitle>\n      </mat-card-header>\n      <agm-map [latitude]='11.3003696' [longitude]='77.1865486' [zoom]='10' [zoomControl]=\"false\" [styles]=\"mapStyle\">\n        <agm-marker [latitude]='11.2503696' [longitude]='77.0365486'></agm-marker>\n        <agm-marker [latitude]='11.3503696' [longitude]='77.3365486'></agm-marker>\n        <agm-polyline [strokeColor]=\"'red'\" [editable]=\"true\">\n          <agm-polyline-point [latitude]='11.2503696' [longitude]='77.0365486'></agm-polyline-point>\n          <agm-polyline-point [latitude]='11.3503696' [longitude]='77.3365486'></agm-polyline-point>\n        </agm-polyline>\n      </agm-map>\n      <mat-card-content class=\"pt-3\">\n        <p class=\"p-3\">\n          A map with 2 Map Markers plotted with the latitude and longitude specified by the user and a line between those points with custom color.\n        </p>\n      </mat-card-content>\n      <mat-card-actions class=\"m-3\">\n        <a href=\"https://github.com/ThiruPraveen18/ANGULAR-GoogleMaps/blob/master/src/app/app.component.html\"><button mat-raised-button color=\"primary\">VIEW CODE</button></a>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n  <div class=\"col-md-12 p-3\">\n    <mat-card>\n      <div class=\"row\">\n        <div class=\"col-md-4 p-3\">\n          <mat-card-header>\n            <mat-card-title>Draw Route between Places</mat-card-title>\n            <mat-card-subtitle>Directions</mat-card-subtitle>\n          </mat-card-header>\n          <h5 class=\"p-3\">Enter the Origin and the Destination details below to find the optimized route.</h5>\n          <form class=\"p-3\">\n            <table cellspacing=\"0\">\n              <tr>\n                <td>\n                  <mat-form-field>\n                    <input matInput placeholder=\"Origin City\" [(ngModel)]=\"origin\" name=\"orign\" required>\n                  </mat-form-field>\n                </td>\n              </tr>\n              <tr>\n                <td>\n                  <mat-form-field>\n                    <input matInput placeholder=\"Destination City\" [(ngModel)]=\"destination\" name=\"destination\" required>\n                  </mat-form-field>\n                </td>\n              </tr>\n            </table>\n          </form>\n          <button class=\"m-3\" mat-raised-button (click)=\"route()\" color=\"primary\">Find Distance</button>\n        </div>\n        <div class=\"col-md-8 p-3\">\n          <agm-map style=\"height:600px\" [latitude]='11.2503696' [longitude]='76.9365486' [zoom]='9' [zoomControl]=\"false\" [styles]=\"mapStyle\">\n            <agm-direction [origin]=\"origin\" [destination]=\"destination\"></agm-direction>\n          </agm-map>\n        </div>\n      </div>\n      <mat-card-content class=\"pt-3\">\n        <p class=\"p-3\">\n          A map with the direction route between two places as specified by the user.\n        </p>\n      </mat-card-content>\n      <mat-card-actions class=\"m-3\">\n        <a href=\"https://github.com/ThiruPraveen18/ANGULAR-GoogleMaps/blob/master/src/app/app.component.html\"><button mat-raised-button color=\"primary\">VIEW CODE</button></a>\n      </mat-card-actions>\n    </mat-card>\n  </div>\n</div>");
-
-/***/ }),
-
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/map/map.component.html":
-/*!******************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/map/map.component.html ***!
-  \******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>map works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"loading\">\n    Loading...\n</div>\n<div *ngIf=\"!loading\">\n    <div *ngIf=\"!blogs && !author\">\n        <p>No blog found!</p>\n    </div>\n    <div [ngClass]=\"blogClass\" *ngIf=\"blogs\">\n        <h1 class=\"title\">{{blogTitle}}</h1>\n        <div *ngFor=\"let x of userBlogs.items; last as last;\">\n            <h3 class=\"link\">\n                <a href=\"{{x.link}}\" target=\"_blank\">{{x.title}}</a>\n            </h3>\n            <span class=\"author\">Author: {{x.author}} </span> |\n            <span class=\"pubDate\">Published On: {{x.pubDate | date}} </span>\n            <ul class=\"categories\">\n                <li *ngFor=\"let y of x.categories\">\n                    <span>{{y}}</span>\n                </li>\n            </ul>\n            <hr class=\"separator\">\n        </div>\n    </div>\n    <div [ngClass]=\"authorClass\" *ngIf=\"author\">\n        <h1 class=\"title\">{{authorTitle}}</h1>\n        <div>\n            <h3 class=\"link\">\n                <a href=\"{{userBlogs.feed.url}}\" target=\"_blank\">{{userBlogs.feed.author || userBlogs.feed.title}}</a>\n            </h3>\n            <span>\n        <img src=\"{{userBlogs.feed.image}}\" alt=\"{{userBlogs.feed.title}}\" />\n        <p class=\"description\">{{userBlogs.feed.description}}</p>\n      </span>\n        </div>\n    </div>\n</div>");
 
 /***/ }),
 
@@ -278,36 +265,6 @@ function __importDefault(mod) {
 
 /***/ }),
 
-/***/ "./src/app/app-routing.module.ts":
-/*!***************************************!*\
-  !*** ./src/app/app-routing.module.ts ***!
-  \***************************************/
-/*! exports provided: AppRoutingModule */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-
-
-
-const routes = [];
-let AppRoutingModule = class AppRoutingModule {
-};
-AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })
-], AppRoutingModule);
-
-
-
-/***/ }),
-
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -368,90 +325,41 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _angular_elements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/elements */ "./node_modules/@angular/elements/fesm2015/elements.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _map_map_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./map/map.component */ "./src/app/map/map.component.ts");
-
 
 
 
 
 
 let AppModule = class AppModule {
+    constructor(injector) {
+        this.injector = injector;
+    }
+    ngDoBootstrap() {
+        window.alert(123);
+        const el = Object(_angular_elements__WEBPACK_IMPORTED_MODULE_3__["createCustomElement"])(_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], { injector: this.injector });
+        customElements.define('map-component', el);
+    }
 };
+AppModule.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Injector"] }
+];
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-            _map_map_component__WEBPACK_IMPORTED_MODULE_5__["MapComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
         ],
         imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"]
         ],
         providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
+        bootstrap: [],
+        entryComponents: [
+            _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
+        ]
     })
 ], AppModule);
-
-
-
-/***/ }),
-
-/***/ "./src/app/map/map.component.css":
-/*!***************************************!*\
-  !*** ./src/app/map/map.component.css ***!
-  \***************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21hcC9tYXAuY29tcG9uZW50LmNzcyJ9 */");
-
-/***/ }),
-
-/***/ "./src/app/map/map.component.ts":
-/*!**************************************!*\
-  !*** ./src/app/map/map.component.ts ***!
-  \**************************************/
-/*! exports provided: MapComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapComponent", function() { return MapComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _model_atm_geoservice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/atm.geoservice */ "./src/app/model/atm.geoservice.ts");
-
-
-
-let MapComponent = class MapComponent {
-    constructor(atmGeoService) {
-        this.atmGeoService = atmGeoService;
-        this.mapsData = [];
-    }
-    ngOnInit() {
-        this.getAtmMapData();
-        this.renderMap();
-    }
-    getAtmMapData() {
-        this.atmGeoService.getData().then(atm => this.mapsData = atm);
-    }
-    renderMap() {
-    }
-};
-MapComponent.ctorParameters = () => [
-    { type: _model_atm_geoservice__WEBPACK_IMPORTED_MODULE_2__["AtmGeoservice"] }
-];
-MapComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-map',
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./map.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/map/map.component.html")).default,
-        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./map.component.css */ "./src/app/map/map.component.css")).default]
-    })
-], MapComponent);
 
 
 

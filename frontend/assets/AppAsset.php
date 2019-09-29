@@ -15,10 +15,9 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'angular/dist/inline.bundle.js',
-        'angular/dist/polyfills.bundle.js',
-        'angular/dist/vendor.bundle.js',
-        'angular/dist/main.bundle.js',
+        'angular/dist/polyfills-es5.js',
+        'angular/dist/vendor-es5.js',
+        'angular/dist/main-es5.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -6,6 +6,8 @@ use common\models\Atm;
 use common\services\ATMServiceInterface;
 use yii\console\Controller;
 use yii\console\ExitCode;
+use yii\db\Transaction;
+use yii\helpers\Console;
 
 class InitController extends Controller
 {
@@ -34,12 +36,29 @@ class InitController extends Controller
     public function actionIndex()
     {
         $atmList = $this->atmService->getList('');
-        foreach ($atmList as $item) {
-            $atm = new Atm();
-            $atm->hydrate($item);
-            $atm->save();
+
+        $count = count($atmList);
+        Atm::deleteAll();
+        $rows = [];
+        $model = new Atm();
+        for ($i = 0; $i < $count; $i++) {
+            $rows[$i][] = $atmList[$i]['fullAddressUa'];
+            $rows[$i][] = $atmList[$i]['latitude'];
+            $rows[$i][] = $atmList[$i]['longitude'];
+        }
+        $attributes = $model->attributes;
+        unset($attributes['id']);
+
+        $transaction = \Yii::$app->db->beginTransaction(Transaction::READ_COMMITTED);
+        try {
+            \Yii::$app->db->createCommand()->batchInsert(Atm::tableName(), array_keys($attributes), $rows)->execute();
+            $transaction->commit();
+            return ExitCode::OK;
+        } catch (\yii\db\Exception $ex) {
+            $transaction->rollBack();
+            $this->stdout("Error {$ex->getMessage()}!\n", Console::BG_RED);
+            return ExitCode::UNSPECIFIED_ERROR;
         }
 
-        return ExitCode::OK;
     }
 }

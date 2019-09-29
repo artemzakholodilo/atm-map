@@ -1,34 +1,29 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {Injector, NgModule} from '@angular/core';
-import {createCustomElement} from '@angular/elements';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Injector } from '@angular/core';
+import { createCustomElement } from "@angular/elements";
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {MapComponent} from './map/map.component';
+import { AppComponent } from './app.component';
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        MapComponent
+        AppComponent
     ],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
+        BrowserModule
     ],
     providers: [],
-    entryComponents: [AppComponent, MapComponent],
-    bootstrap: [AppComponent]
+    bootstrap: [],
+    entryComponents:[
+        AppComponent
+    ]
 })
 export class AppModule {
-    constructor(private injector: Injector){}
+    constructor(private injector: Injector) {}
 
     ngDoBootstrap() {
-        const el = createCustomElement(AppComponent,
-            { injector: this.injector });
-        customElements.define('my-own-element', el);
-        const el2 = createCustomElement(MapComponent,
-            { injector: this.injector });
-        customElements.define('map-element', el2);
+        window.alert(123);
+        const el = createCustomElement(AppComponent, { injector: this.injector });
+        customElements.define('map-component', el);
     }
 }

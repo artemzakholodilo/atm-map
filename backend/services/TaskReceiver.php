@@ -8,20 +8,15 @@ class TaskReceiver extends BaseObject
 {
     use AmqpConnectionTrait;
 
-    private $messages;
-
+    /**
+     * @return mixed
+     */
     public function getMessages()
     {
-        $connection = $this->getConnection();
-        $callback = function($message)
-        {
-            $data = json_decode($message->body, true);
-            $this->sender->send($data);
-        };
-        $connection->basic_qos(null, 1, null);
-        $connection->basic_consume($this->queueName, '', false, false, false, false, $callback);
-        while(count($connection->callbacks)) {
-            $connection->wait();
-        }
+        $channel = $this->getChannel();
+        $channel->queue_declare($this->queueName, false, false, false, false);
+        $result = $channel->basic_get($this->queueName);
+
+        return $result->getBody() ?? [];
     }
 }

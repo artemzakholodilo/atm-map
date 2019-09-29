@@ -42,8 +42,7 @@ class UpdateAtmController extends Controller
     public function actionIndex()
     {
         $messages = $this->taskReceiver->getMessages();
-        var_dump($messages); exit;
-        if (count($messages)) {
+        if (!is_null($messages)) {
             $this->updateList();
         }
 
@@ -73,10 +72,27 @@ class UpdateAtmController extends Controller
             return ($a->latitude !== $b->latitude) && ($a->longitude !== $b->longitude);
         });
 
-        foreach ($newAtmData as $newAtm) {
-            $newAtm->save();
+        $count = count($newAtmData);
+        $rows = [];
+        $model = new Atm();
+        $attributes = $model->attributes;
+        unset($attributes['id']);
+
+        $transaction = \Yii::$app->db->beginTransaction(Transaction::READ_COMMITTED);
+        for ($i = 0; $i < $count; $i++) {
+            $rows[$i][] = $newAtmData[$i]->address;
+            $rows[$i][] = $newAtmData[$i]->latitude;
+            $rows[$i][] = $newAtmData[$i]->longitude;
         }
 
-        return true;
+        try {
+            \Yii::$app->db->createCommand()->batchInsert(Atm::tableName(), array_keys($attributes), $rows)->execute();
+            $transaction->commit();
+            return ExitCode::OK;
+        } catch (\yii\db\Exception $ex) {
+            $transaction->rollBack();
+            $this->stdout("Error {$ex->getMessage()}!\n", Console::BG_RED);
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
     }
 }

@@ -84,13 +84,10 @@ class AtmController extends Controller
      */
     public function actionUpdateList()
     {
-        if (\Yii::$app->request->isPost) {
-            $this->taskSender->sendTask(['update-list' => true]);
-            $searchModel = new AtmSearch();
-            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-            $message = 'Updated successfully';
+        if (\Yii::$app->request->isGet) {
+            $this->taskSender->sendTask('update-list');
 
-            return $this->render('index', compact('searchModel', 'dataProvider', 'message'));
+            return $this->redirect(['index']);
         }
 
         return $this->redirect(['index']);
@@ -108,7 +105,7 @@ class AtmController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

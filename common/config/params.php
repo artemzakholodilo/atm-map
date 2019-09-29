@@ -8,10 +8,11 @@ return [
     'atmDefaultCity' => 'Днепропетровск',
 
     'rabbitMQ' => [
-        'host' => '127.0.0.1',
-        'port' => '5632',
+        'host' => 'rabbitmq',
+        'port' => '5672',
         'username' => 'guest',
         'password' => 'guest',
-        'defaultQueue' => 'atm'
+        'defaultQueue' => 'atm',
+        'autoDelete' => YII_DEBUG ?? true
     ]
 ];

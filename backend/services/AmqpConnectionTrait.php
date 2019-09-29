@@ -11,19 +11,39 @@ trait AmqpConnectionTrait
      */
     protected $queueName;
 
+    protected $autoDelete;
+
     /**
-     * @return mixed
+     * @var AMQPStreamConnection $connection
      */
-    protected function getConnection()
+    protected $connection;
+
+    public function __construct()
     {
         $amqpParams = \Yii::$app->params['rabbitMQ'];
-        $connection = new AMQPStreamConnection(
+        $this->setQueueName($amqpParams['defaultQueue']);
+        $this->connection = new AMQPStreamConnection(
             $amqpParams['host'], $amqpParams['port'],
             $amqpParams['username'], $amqpParams['password']
         );
-        $channel = $connection->channel();
-        $channel->queue_declare($this->queueName, false, false, false, false);
+    }
+
+    /**
+     * @return \PhpAmqpLib\Channel\AMQPChannel
+     */
+    protected function getChannel()
+    {
+        $channel = $this->connection->channel();
+        $channel->queue_declare(
+            $this->queueName, false, false, false,
+            false
+        );
         return $channel;
+    }
+
+    protected function closeConnection()
+    {
+        $this->connection->close();
     }
 
     public function setQueueName($name)

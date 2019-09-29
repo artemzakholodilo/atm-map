@@ -2,6 +2,7 @@
 
 namespace backend\services;
 
+use PhpAmqpLib\Message\AMQPMessage;
 use yii\base\BaseObject;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
@@ -17,7 +18,7 @@ class TaskSender extends BaseObject
     {
         $message = new AMQPMessage($message, ['delivery_mode' => $environmentProd ? 1 : 2]);
         try {
-            $this->connection->basic_publish($message, '', $this->queueName);
+            $this->getChannel()->basic_publish($message, '', $this->queueName);
         } catch (\AMQPException $ex) {
             var_dump($ex); exit;
         }
