@@ -11,6 +11,7 @@ use yii\helpers\Url;
 $this->title = 'Atms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<h1>HQGDUYQWGDUYQW</h1>
 <div class="atm-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
